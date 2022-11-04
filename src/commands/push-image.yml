@@ -11,6 +11,11 @@ parameters:
     type: env_var_name
     default: GOOGLE_PROJECT_ID
 
+  google-artifact-registry-repository-name:
+    description: The Google Artifact name (not used for GCR)
+    type: string
+    default: ""
+
   image:
     description: A name for your docker image
     type: string
@@ -31,6 +36,7 @@ steps:
       environment:
         ORB_ENV_PROJECT_ID: << parameters.google-project-id >>
         ORB_VAL_REGISTRY_URL: << parameters.registry-url >>
+        ORB_VAL_REPOSITORY_NAME: << parameters.google-artifact-registry-repository-name >>
         ORB_VAL_IMAGE: << parameters.image >>
         ORB_VAL_DIGEST_PATH: << parameters.digest-path >>
         ORB_EVAL_TAG: << parameters.tag >>
